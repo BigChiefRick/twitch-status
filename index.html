@@ -3,51 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Twitch Status</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Nova+Mono' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<nav class="topbar">
-  Twitch Status
-</nav>
-
 <div class="container">
-  <div class="row">
-
-    <div class="container">
-      <div class="results-panel">
-        <div class="switch btn-group btn-group-justified" role="group" aria-label="...">
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-lg btn-twitch active" id="all">All</button>
-          </div>
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-lg btn-twitch" id="online">Online</button>
-          </div>
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-lg btn-twitch" id="offline">Offline</button>
-          </div>
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon" id="search-box">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </span>
-          <input type="search" class="form-control" placeholder="username" aria-describedby="search-box">
-        </div>
-
-        <div class="row">
-          <div id='results'>
-          </div>
-        </div>
+  <div class="row" id="header">
+    <h1>Twitch Streamers</h1>
+    <div class="menu">
+      <div class="selector active" id="all">
+        <div class="circle"></div><p>All</p>
+      </div>
+      <div class="selector" id="online">
+        <div class="circle"></div><p>Online</p>
+      </div>
+      <div class="selector" id="offline">
+        <div class="circle"></div><p>Offline</p>
       </div>
     </div>
+  </div>
+  <div id="display">
+  </div>
+  <div class="row" id="footer">
+  </div>
+</div>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script><script  src="./script.js"></script>
 
 </body>
 </html>
