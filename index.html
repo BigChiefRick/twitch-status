@@ -2,36 +2,27 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Twitch Status</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+  <title>CodePen - Twitch Streamers</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&amp;display=swap'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div class="container">
-  <div class="row" id="header">
-    <h1>Twitch Streamers</h1>
-    <div class="menu">
-      <div class="selector active" id="all">
-        <div class="circle"></div><p>All</p>
-      </div>
-      <div class="selector" id="online">
-        <div class="circle"></div><p>Online</p>
-      </div>
-      <div class="selector" id="offline">
-        <div class="circle"></div><p>Offline</p>
-      </div>
-    </div>
+<div id="container">
+  <h1 id="title">twitch streamers</h1>
+  <div id="selectors_container">
+    <input type="radio" name="selector" id="ALL" checked="checked"/>
+    <label for="ALL"><b>ALL</b></label>
+    <input type="radio" name="selector" id="ONLINE"/>
+    <label for="ONLINE"><b>ONLINE</b></label>
+    <input type="radio" name="selector" id="OFFLINE"/>
+    <label for="OFFLINE"><b>OFFLINE</b></label>
   </div>
-  <div id="display">
-  </div>
-  <div class="row" id="footer">
-  </div>
+  <div id="streamers_container"></div>
 </div>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script><script  src="./script.js"></script>
 
 </body>
 </html>

@@ -1,54 +1,49 @@
-var channels = ["soflowildlife", "AUSTRALISFISHING", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff","brunofin","comster404","test_channel","cretetion","sheevergaming","TR7K","OgamingSC2","ESL_SC2"];
+const url = "https://twitch-proxy.freecodecamp.rocks/twitch-api/";
 
-function getChannelInfo() {
-  channels.forEach(function(channel) {
-    function makeURL(type, name) {
-      return 'https://api.twitch.tv/kraken/' + type + '/' + name + '?callback=?&client_id=0xk1xqk3dnicowc8qizeujiixhb2ap';
-    };
-    $.getJSON(makeURL("streams", channel), function(data) {
-      var game,
-          status;
-      if (data.stream === null) {
-        game = "Offline";
-        status = "offline";
-      } else if (data.stream === undefined) {
-        game = "Account Closed";
-        status = "offline";
-      } else {
-        game = data.stream.game;
-        status = "online";
-      };
-      $.getJSON(makeURL("channels", channel), function(data) {
-        var logo = data.logo != null ? data.logo : "http://dummyimage.com/50x50/ecf0e7/5c5457.jpg&text=0x3F",
-          name = data.display_name != null ? data.display_name : channel,
-          description = status === "online" ? ': ' + data.status : "";
-          html = '<div class="row ' + 
-          status + '"><div class="col-xs-2 col-sm-1" id="icon"><img src="' + 
-          logo + '" class="logo"></div><div class="col-xs-10 col-sm-3" id="name"><a href="' + 
-          data.url + '" target="_blank">' + 
-          name + '</a></div><div class="col-xs-10 col-sm-8" id="streaming">'+ 
-          game + '<span class="hidden-xs">' + 
-          description + '</span></div></div>';
-        status === "online" ? $("#display").prepend(html) : $("#display").append(html);
-      });
-    });
-  });
-};
+const streamers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
 
-$(document).ready(function() {
-  getChannelInfo();
-  $(".selector").click(function() {
-    $(".selector").removeClass("active");
-    $(this).addClass("active");
-    var status = $(this).attr('id');
-    if (status === "all") {
-      $(".online, .offline").removeClass("hidden");
-    } else if (status === "online") {
-      $(".online").removeClass("hidden");
-      $(".offline").addClass("hidden");
-    } else {
-      $(".offline").removeClass("hidden");
-      $(".online").addClass("hidden");
+for (const streamer of streamers) {
+  Promise.all([
+    fetch(url+"streams/"+streamer).then(res=>res.json()),
+    fetch(url+"channels/"+streamer).then(res=>res.json())
+  ]).then(data => {
+    const streaming = data[0];
+    const user = data[1];
+    $("#streamers_container").append(`
+      <div class="user OFFLINE" id=${streamer}>
+        <a href=${user.url} target="_blank" class="name">
+          <img src=${user.logo} onerror="this.src='https://i.ibb.co/JrvVLxB/hen.jpg'">
+          <h2>${user.display_name}</h2></a>
+        </a>
+        <div class="stream"><h3>Offline</h3></div>
+      </div>
+    `);
+    const id = `#${streamer}`;
+    $(id).css("background-image",`url(${user.video_banner}), url(${user.profile_banner})`);
+    if (streaming.stream !== null) {
+      $(id).removeClass("OFFLINE").addClass("ONLINE");
+      $(id+" > .stream").html(`
+        <h3>🔴 ${streaming.stream.channel.status}</h3>
+        <p class="game">${streaming.stream.game}</p>
+      `);
     }
-  })
+  });
+}
+
+const input = "input[name='selector']";
+$(input).change(() => {
+  $("#container").fadeToggle("fast", () => {
+    switch ($(input+":checked").attr("id")) {
+      case "ALL":
+        $(".ONLINE, .OFFLINE, .stream").show();
+        break;
+      case "ONLINE":
+        $(".ONLINE, .stream").show();
+        $(".OFFLINE").hide();
+        break;
+      case "OFFLINE":
+        $(".OFFLINE").show();
+        $(".ONLINE, .stream").hide();
+    }
+  }).fadeToggle("fast");
 });
