@@ -6,14 +6,14 @@ $(document).ready(function() {
   // URL for Twitch TV Channels
   var URL_Channel = 'https://api.twitch.tv/kraken/channels/';
 
-  var callbak = '?callback=?&client_id=j15r3tcqv1ies1opd4ve46kq74106un';
+  var callbak = '?callback=?&client_id=0xk1xqk3dnicowc8qizeujiixhb2ap';
 
   // sample Twitch TV Users
 
   var twitchUsers = [
     "soflowildlife",
-    "ESL_CSGO",
-    "OgamingSC2",
+    "AUSTRALISFISHING",
+    "Rellik",
     "cretetion",
     "freecodecamp",
     "storbeck",
