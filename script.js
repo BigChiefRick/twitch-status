@@ -11,7 +11,7 @@ $(document).ready(function() {
   // sample Twitch TV Users
 
   var twitchUsers = [
-    "ESL_SC2",
+    "soflowildlife",
     "ESL_CSGO",
     "OgamingSC2",
     "cretetion",
