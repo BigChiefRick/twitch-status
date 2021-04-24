@@ -1,4 +1,4 @@
-const url = "https://twitch-proxy.freecodecamp.rocks/twitch-api/";
+const url = "https://api.twitch.tv/helix";
 
 const streamers = ["soflowildlife","AUSTRALISFISHING","Therealshookon3","Splucy","AlecLudford","SteelHorseLive","Rellik","FinaoLive","Murda","LookOutRacing","Hossworth"];
 
