@@ -1,6 +1,6 @@
 const url = "https://twitch-proxy.freecodecamp.rocks/twitch-api/";
 
-const streamers = ["soflowildlife", "AUSTRALISFISHING", "Therealshookon3", "Splucy", "AlecLudford", "SteelHorseLive", "Rellik", "FinaoLive", "Murda", "LookOutRacing", "Hossworth"];
+const streamers = ["soflowildlife","AUSTRALISFISHING","Therealshookon3","Splucy","AlecLudford","SteelHorseLive","Rellik","FinaoLive","Murda","LookOutRacing","Hossworth"];
 
 for (const streamer of streamers) {
   Promise.all([
